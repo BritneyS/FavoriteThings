@@ -25,6 +25,8 @@ import UIKit
 
 class FavoriteThingsTableViewController: UITableViewController {
 
+    let favoriteThings = ["Back to the Future II", "Shawn of the Dead", "Memento", "American Psycho", "The Shining"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +37,17 @@ class FavoriteThingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListItem", for: indexPath)
+        
+        cell.textLabel?.text = favoriteThings[indexPath.row]
+        
+        return cell
+    }
 
 }
 
