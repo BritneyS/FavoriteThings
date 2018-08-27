@@ -25,7 +25,9 @@ import UIKit
 
 class FavoriteThingsTableViewController: UITableViewController {
 
-    let favoriteThings = ["Back to the Future II", "Shawn of the Dead", "Memento", "American Psycho", "The Shining"]
+    var favoriteThings = ["Back to the Future II", "Shawn of the Dead", "Memento", "American Psycho", "The Shining"]
+    
+    var numOfMovies = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class FavoriteThingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return numOfMovies
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,6 +50,16 @@ class FavoriteThingsTableViewController: UITableViewController {
         
         return cell
     }
+    //swipe to delete functionality
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.favoriteThings.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        numOfMovies-=1
+    }
+    
+    
 
 }
 
