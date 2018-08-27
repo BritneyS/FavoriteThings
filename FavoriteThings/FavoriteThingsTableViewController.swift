@@ -27,7 +27,6 @@ class FavoriteThingsTableViewController: UITableViewController {
 
     var favoriteThings = ["Back to the Future II", "Shawn of the Dead", "Memento", "American Psycho", "The Shining"]
     
-    var numOfMovies = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,7 @@ class FavoriteThingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numOfMovies
+        return favoriteThings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +55,7 @@ class FavoriteThingsTableViewController: UITableViewController {
             self.favoriteThings.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        numOfMovies-=1
+
     }
     
     
